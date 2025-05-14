@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var path = [Int]()
+    
     var body: some View {
-        NavigationStack {
-            List(0..<1000) { i in
-                NavigationLink("Select \(i)", value: i)
+        NavigationStack(path: $path) {
+            VStack {
+                Button("Show 32 then 64") {
+                    path = [32, 64]
+                }
             }
             .navigationDestination(for: Int.self) { selection in
                 Text("You have selected: \(selection)")
