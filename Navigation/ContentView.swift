@@ -11,26 +11,16 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List(0..<1000) { i in
-                NavigationLink("Tap Me") {
-                    DetailView(number: i)
-                }
+                NavigationLink("Select \(i)", value: i)
+            }
+            .navigationDestination(for: Int.self) { selection in
+                Text("You have selected: \(selection)")
             }
         }
     }
 }
 
-struct DetailView: View {
-    var number: Int
-    
-    var body: some View {
-        Text("Detail View \(number)")
-    }
-    
-    init(number: Int) {
-        self.number = number
-        print("Creating detail view \(number)")
-    }
-}
+
 
 #Preview {
     ContentView()
