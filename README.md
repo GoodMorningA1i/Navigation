@@ -10,6 +10,11 @@ Part 1 (actually beginning of Part 2 haha)
 
 https://github.com/user-attachments/assets/5903cc92-0cc0-41ac-ac01-322e0f66622d
 
+Part 2 Section 1
+
+https://github.com/user-attachments/assets/e62064eb-74a4-4e75-9c18-9e5b4cf760b9
+
+
 ### Built With
 
 Xcode, SwiftUI
