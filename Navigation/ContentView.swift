@@ -7,21 +7,33 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var path = [Int]()
+struct DetailView: View {
+    var number: Int
+    @Binding var path: [Int]
     
     var body: some View {
-        NavigationStack(path: $path) {
-            VStack {
-                Button("Show 32 then 64") {
-                    path = [32, 64]
+        NavigationLink("Go to Random Number", value: Int.random(in: 1...1000))
+            .navigationTitle("Number: \(number)")
+            .toolbar {
+                Button("Home") {
+                    path.removeAll()
                 }
             }
-            .navigationDestination(for: Int.self) { selection in
-                Text("You have selected: \(selection)")
-            }
+    }
+}
+
+struct ContentView: View {
+    @State private var path = [Int]()
+
+    var body: some View {
+        NavigationStack(path: $path) {
+            DetailView(number: 0, path: $path)
+                .navigationDestination(for: Int.self) { i in
+                    DetailView(number: i, path: $path)
+                }
         }
     }
+
 }
 
 
